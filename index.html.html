@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taniya Mobile Plaza - Official Website</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL VARIABLES & RESET --- */
+        :root {
+            --primary: #0066cc; /* Deep Blue */
+            --secondary: #1a1a1a; /* Dark Grey */
+            --accent: #ff9900; /* Orange for Highlights */
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --text-gray: #555;
+            
+            /* Social Colors */
+            --wa: #25D366;
+            --fb: #1877F2;
+            --ig: #E1306C;
+            --mail: #EA4335;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--secondary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- UTILITY CLASSES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-light { background-color: var(--light); }
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 5px;
+        }
+
+        .section-subtitle {
+            color: var(--text-gray);
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* --- FLOATING WHATSAPP --- */
+        .float-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: var(--wa);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-box img {
+            height: 55px;
+            width: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+
+        .shop-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--secondary);
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .menu-toggle { display: none; font-size: 24px; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('https://i.ibb.co/QFGwqnKT/21274.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+
+        .open-badge {
+            background: var(--wa);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover { transform: translateY(-10px); }
+        .feature-card i { font-size: 40px; color: var(--primary); margin-bottom: 15px; }
+        .feature-card h3 { margin-bottom: 10px; font-weight: 600; }
+
+        /* --- PRODUCT GRID STYLES --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .product-card:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.15); transform: translateY(-5px); }
+
+        .p-img {
+            height: 250px;
+            width: 100%;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .p-img img { height: 100%; width: 100%; object-fit: cover; transition: 0.5s; }
+        .product-card:hover .p-img img { transform: scale(1.1); }
+
+        .p-details { padding: 20px; text-align: center; }
+        .p-price { color: var(--wa); font-weight: 800; font-size: 1.2rem; margin: 10px 0; }
+        
+        /* --- REPAIR SECTION --- */
+        .repair-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .repair-text { flex: 1; min-width: 300px; }
+        .repair-img { flex: 1; min-width: 300px; }
+        .repair-img img { border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+
+        .service-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .service-list i { color: var(--primary); }
+
+        /* --- ACCESSORIES SECTION --- */
+        .acc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .acc-item { background: white; padding: 30px; border-radius: 10px; border: 1px solid #eee; transition: 0.3s; }
+        .acc-item:hover { border-color: var(--primary); }
+        .acc-item i { font-size: 35px; color: var(--secondary); margin-bottom: 10px; }
+
+        /* --- CONTACT & SOCIAL BUTTONS --- */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 40px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            min-width: 250px;
+            justify-content: center;
+        }
+
+        .social-btn:hover { transform: scale(1.05); }
+
+        .btn-wa { background: var(--wa); }
+        .btn-fb { background: var(--fb); }
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .btn-mail { background: var(--mail); }
+
+        .contact-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: #111; color: #aaa; padding: 60px 0 20px; }
+        .footer-logo { color: white; font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; display: block; }
+        .footer-links a { display: block; margin-bottom: 10px; }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .acc-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/917001707944" target="_blank" class="float-wa">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navbar -->
+    <header>
+        <div class="container navbar">
+            <div class="logo-box">
+                <img src="https://i.ibb.co/dskPBpkM/file-000000005dd8720693e64551f2d6e819.png" alt="Taniya Mobile Logo">
+                <span class="shop-name">Taniya Mobile<br><small style="font-size:0.7rem; color:gray;">PLAZA</small></span>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#new">New Phones</a></li>
+                <li><a href="#used">Second Hand</a></li>
+                <li><a href="#repair">Repairing</a></li>
+                <li><a href="#accessories">Accessories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section id="home" class="hero">
+        <div>
+            <span class="open-badge"><i class="fas fa-clock"></i> Open 7 Days A Week</span>
+            <h1>Welcome to <br> Taniya Mobile Plaza</h1>
+            <p>Your One-Stop Shop for New Phones, Used Phones & Expert Repairing. <br> Trusted by thousands in Gourangdi & Panuria.</p>
+            <div style="margin-top: 30px;">
+                <a href="#used" class="btn">View Used Collection</a>
+                <a href="#contact" class="btn" style="background: white; color: black; margin-left: 10px;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES OVERLAP -->
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Buy & Sell</h3>
+                <p>Best prices for new phones and high value for your old phone.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tools"></i>
+                <h3>Quick Repair</h3>
+                <p>Screen replacement and hardware fix within hours.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>Genuine Parts</h3>
+                <p>100% Original accessories and warranty products.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. NEW PHONES SECTION -->
+    <section id="new" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Brand New Smartphones</h2>
+            <p class="section-subtitle text-center">Latest launches from Apple, Samsung, Vivo, Oppo & Realme.</p>
+            
+            <div class="product-grid">
+                <!-- Item 1 -->
+                <div class="product-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500" alt="iPhone 15"></div>
+                    <div class="p-details">
+                        <h3>Apple iPhone 15</h3>
+                        <p class="p-price">Available</p>
+                        <a href="https://wa.me/917001707944" target="_blank" class="btn" style="font-size:0.8rem; padding:8px 20px;">Get Price</a>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="product-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500" alt="Samsung"></div>
+                    <div class="p-details">
+                        <h3>Samsung S24 Ultra</h3>
+                        <p class="p-price">Available</p>
+                        <a href="https://wa.me/917001707944" target="_blank" class="btn" style="font-size:0.8rem; padding:8px 20px;">Get Price</a>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="product-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff23?w=500" alt="Realme"></div>
+                    <div class="p-details">
+                        <h3>Realme 12 Pro+</h3>
+                        <p class="p-price">Best Deal</p>
+                        <a href="https://wa.me/917001707944" target="_blank" class="btn" style="font-size:0.8rem; padding:8px 20px;">Get Price</a>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="product-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="Redmi"></div>
+                    <div class="p-details">
+                        <h3>Redmi Note 13</h3>
+                        <p class="p-price">Budget King</p>
+                        <a href="https://wa.me/917001707944" target="_blank" class="btn" style="font-size:0.8rem; padding:8px 20px;">Get Price</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SECOND HAND / USED PHONES -->
+    <section id="used" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">Second Hand Market</h2>
+            <p class="section-subtitle text-center">Premium Used Phones at Affordable Prices. Fully Tested.</p>
+
+            <div class="product-grid">
+                <!-- Used 1 -->
+                <div class="product-card">
+                    <div class="p-img">
+                        <span style="position:absolute; top:10px; left:10px; background:red; color:white; padding:2px 10px; font-size:0.8rem; border-radius:3px;">HOT</span>
+                        <img src="https://i.ibb.co/QFGwqnKT/21274.jpg" alt="Mixed Android">
+                    </div>
+                    <div class="p-details">
+                        <h3>Used Android Lot</h3>
+                        <p style="font-size:0.9rem;">Vivo / Oppo / Samsung Mix</p>
+                        <p class="p-price">Starts ₹4,500</p>
+                        <a href="https://wa.me/917001707944" class="btn" style="font-size:0.8rem;">Buy Now</a>
+                    </div>
+                </div>
+                <!-- Used 2 -->
+                <div class="product-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500" alt="Used iPhone"></div>
+                    <div class="p-details">
+                        <h3>Used iPhone X / 11 / 12</h3>
+                        <p style="font-size:0.9rem;">Genuine Battery | FaceID OK</p>
+                        <p class="p-price">Starts ₹15,000</p>
+                        <a href="https://wa.me/917001707944" class="btn" style="font-size:0.8rem;">Buy Now</a>
+                    </div>
+                </div>
+                <!-- Used 3 -->
+                <div class="product-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500" alt="Keypad"></div>
+                    <div class="p-details">
+                        <h3>Keypad Phones</h3>
+                        <p style="font-size:0.9rem;">Rough Use | Dual Sim</p>
+                        <p class="p-price">₹800 - ₹1,500</p>
+                        <a href="https://wa.me/917001707944" class="btn" style="font-size:0.8rem;">Buy Now</a>
+                    </div>
+                </div>
+                <!-- Used 4 -->
+                <div class="product-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500" alt="Used 5G"></div>
+                    <div class="p-details">
+                        <h3>Realme/Redmi 5G</h3>
+                        <p style="font-size:0.9rem;">6 Month Used | Box Available</p>
+                        <p class="p-price">₹8,000 - ₹10,000</p>
+                        <a href="https://wa.me/917001707944" class="btn" style="font-size:0.8rem;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. REPAIRING SECTION -->
+    <section id="repair" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Mobile Repairing Center</h2>
+            <p class="section-subtitle text-center">We fix what others can't. Hardware & Software Solutions.</p>
+
+            <div class="repair-container">
+                <div class="repair-img">
+                    <img src="https://images.unsplash.com/photo-1591196753356-8bf527964b63?w=600" alt="Repairing">
+                </div>
+                <div class="repair-text">
+                    <h3 style="margin-bottom:20px;">Why Choose Our Service?</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-microchip"></i> Advanced Chip Level Repair</li>
+                        <li><i class="fas fa-mobile"></i> Display & Glass Replacement (OCA)</li>
+                        <li><i class="fas fa-battery-full"></i> Original Battery Replacement</li>
+                        <li><i class="fas fa-tint"></i> Water Damage Recovery</li>
+                        <li><i class="fas fa-unlock-alt"></i> Software Unlocking & Flashing</li>
+                    </ul>
+                    <br>
+                    <a href="tel:+917001707944" class="btn">Call Technician</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ACCESSORIES -->
+    <section id="accessories" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">Mobile Accessories</h2>
+            <p class="section-subtitle text-center">Complete your gadget experience.</p>
+            
+            <div class="acc-grid">
+                <div class="acc-item">
+                    <i class="fas fa-headphones"></i>
+                    <h4>Headphones</h4>
+                </div>
+                <div class="acc-item">
+                    <i class="fas fa-charging-station"></i>
+                    <h4>Fast Chargers</h4>
+                </div>
+                <div class="acc-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Glass Guard</h4>
+                </div>
+                <div class="acc-item">
+                    <i class="fas fa-sd-card"></i>
+                    <h4>Memory Cards</h4>
+                </div>
+                <div class="acc-item">
+                    <i class="fas fa-music"></i>
+                    <h4>Bluetooth Speakers</h4>
+                </div>
+                <div class="acc-item">
+                    <i class="fas fa-usb"></i>
+                    <h4>Data Cables</h4>
+                </div>
+                <div class="acc-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Back Covers</h4>
+                </div>
+                <div class="acc-item">
+                    <i class="fas fa-gamepad"></i>
+                    <h4>Gaming Triggers</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ABOUT OWNER -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="repair-container">
+                <div class="repair-text">
+                    <h2 class="section-title">About The Shop</h2>
+                    <h3 style="color:var(--primary); margin-bottom:15px;">Taniya Mobile Plaza</h3>
+                    <p style="margin-bottom:15px;">
+                        Founded by <strong>Rohit Bhandary</strong>, Taniya Mobile Plaza has grown to be the most trusted mobile shop in the area. We believe in honesty, quality, and after-sales service.
+                    </p>
+                    <p>Whether you need a budget phone for daily use or a flagship device for gaming, we have it all. Our repairing lab is equipped with modern tools to ensure your device is safe.</p>
+                </div>
+                <div class="repair-img">
+                    <img src="https://i.ibb.co/QFGwqnKT/21274.jpg" alt="Shop Owner" style="border-radius:10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CONTACT & SOCIAL LINKS -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">Contact Us</h2>
+            <p class="section-subtitle text-center">Click the buttons below to connect directly.</p>
+
+            <div class="social-container">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/share/1Bm9Gr5EWH/" target="_blank" class="social-btn btn-fb">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/2hand_phone____shop?utm_source=qr&igsh=bXBkM3I2Z2VjeHpj" target="_blank" class="social-btn btn-ig">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/917001707944" target="_blank" class="social-btn btn-wa">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+
+                <!-- Gmail -->
+                <a href="mailto:Rohitbhandary37@gmail.com" class="social-btn btn-mail">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+
+            <div class="contact-box">
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:30px; text-align:left;">
+                    <div>
+                        <h4 style="margin-bottom:10px;"><i class="fas fa-map-marker-alt" style="color:var(--primary);"></i> Visit Us:</h4>
+                        <p>Gourangdi / Panuria Area,<br>West Bengal.</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom:10px;"><i class="fas fa-clock" style="color:var(--primary);"></i> Working Hours:</h4>
+                        <p>Open Everyday (Sunday to Monday)<br>Morning - Night</p>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom:10px;"><i class="fas fa-phone-alt" style="color:var(--primary);"></i> Call Us:</h4>
+                        <p><a href="tel:+917001707944">+91 70017 07944</a></p>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px; height:300px; width:100%; border-radius:10px; overflow:hidden;">
+                     <iframe src="https://www.google.com/maps?q=23.6896,86.9696&hl=en&z=14&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+                <div style="flex: 1; min-width: 250px;">
+                    <a href="#" class="footer-logo">Taniya Mobile Plaza</a>
+                    <p>The Best Mobile Shop in Gourangdi. Deals in New & Old Phones.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <h4 style="color:white; margin-bottom:15px;">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#new">New Phones</a>
+                        <a href="#used">Used Phones</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <h4 style="color:white; margin-bottom:15px;">Owner</h4>
+                    <p>Rohit Bhandary</p>
+                    <p>+91 70017 07944</p>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #333;">
+                <p>&copy; 2026 Taniya Mobile Plaza. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE MENU SCRIPT -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            if (nav.style.display === 'flex') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '80px';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.background = 'white';
+                nav.style.padding = '20px';
+                nav.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+            }
+        }
+    </script>
+</body>
+</html>
